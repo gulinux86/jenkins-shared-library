@@ -17,6 +17,7 @@ def call() {
 
         parameters {
             choice(name: 'Escolha_o_ambiente', choices: ['HML', 'PRD', 'TEST'], description: 'Escolha o ambiente para deploy')
+            string(name: 'branch', defaultValue: 'main', description: 'Informe o nome do branch para o clone')
         }
 
         stages {
@@ -28,7 +29,7 @@ def call() {
 
             stage('Checkout') {
                 steps {
-                    sh 'git clone https://github.com/gulinux86/nodejs-jenkins-pipeline.git .'
+                    git clone --single-branch --branch ${params.branch} https://github.com/gulinux86/nodejs-jenkins-pipeline.git .'
                 }
             }
 
