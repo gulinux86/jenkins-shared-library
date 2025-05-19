@@ -29,7 +29,7 @@ def call() {
 
             stage('Checkout') {
                 steps {
-                    git clone --single-branch --branch ${params.branch} https://github.com/gulinux86/nodejs-jenkins-pipeline.git .'
+                   sh "git clone --single-branch --branch ${params.branch} https://github.com/gulinux86/nodejs-jenkins-pipeline.git ."
                 }
             }
 
