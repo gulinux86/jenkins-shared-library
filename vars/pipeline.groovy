@@ -1,3 +1,3 @@
 def call() {
-    println("Pipeline")
+    echo "Pipeline"
 }
