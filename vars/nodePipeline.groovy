@@ -19,7 +19,6 @@ def call() {
             // choice(name: 'Escolha_o_ambiente', choices: ['HML', 'PRD', 'TEST'], description: 'Escolha o ambiente para deploy')
             // //string(name: 'branch', defaultValue: 'main', description: 'Informe o nome do branch para o clone')
             // choice(name: 'branch', choices: ['main', 'develop', 'release', 'prd', 'hml'], description: 'Escolha o branch para o clone')
-            parameters {
             choice(name: 'Escolha_o_ambiente', choices: ['HML', 'PRD', 'TEST'], description: 'Escolha o ambiente para deploy')
             gitParameter(
                 name: 'branch',
@@ -31,9 +30,9 @@ def call() {
                 selectedValue: 'TOP',
                 quickFilterEnabled: true,
                 useRepository: 'https://github.com/gulinux86/nodejs-jenkins-pipeline.git'
-        // gitCredentialsId: 'seu-credencial-id' // Se for repositório privado
     )
 }
+
         }
 
         stages {
