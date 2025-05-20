@@ -16,9 +16,13 @@ def call() {
         }
 
         parameters {
-            choice(name: 'Escolha_o_ambiente', choices: ['HML', 'PRD', 'TEST'], description: 'Escolha o ambiente para deploy')
-            //string(name: 'branch', defaultValue: 'main', description: 'Informe o nome do branch para o clone')
-            choice(name: 'branch', choices: ['main', 'develop', 'release', 'prd', 'hml'], description: 'Escolha o branch para o clone')
+            // choice(name: 'Escolha_o_ambiente', choices: ['HML', 'PRD', 'TEST'], description: 'Escolha o ambiente para deploy')
+            // //string(name: 'branch', defaultValue: 'main', description: 'Informe o nome do branch para o clone')
+            // choice(name: 'branch', choices: ['main', 'develop', 'release', 'prd', 'hml'], description: 'Escolha o branch para o clone')
+            gitParameter branchFilter: 'origin/(.*)',
+                     defaultValue: 'develop',
+                     name: 'BRANCH',
+                     type: 'PT_BRANCH_TAG'
         }
 
         stages {
