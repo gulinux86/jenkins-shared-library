@@ -19,7 +19,7 @@ def call() {
             // choice(name: 'Escolha_o_ambiente', choices: ['HML', 'PRD', 'TEST'], description: 'Escolha o ambiente para deploy')
             // //string(name: 'branch', defaultValue: 'main', description: 'Informe o nome do branch para o clone')
             // choice(name: 'branch', choices: ['main', 'develop', 'release', 'prd', 'hml'], description: 'Escolha o branch para o clone')
-            choice(name: 'Escolha_o_ambiente', choices: ['HML', 'PRD', 'TEST'], description: 'Escolha o ambiente para deploy'),
+            choice(name: 'Escolha_o_ambiente', choices: ['HML', 'PRD', 'TEST'], description: 'Escolha o ambiente para deploy')
             gitParameter(
                 name: 'branch',
                 type: 'PT_BRANCH',
@@ -29,7 +29,6 @@ def call() {
                 sortMode: 'ASCENDING',
                 selectedValue: 'TOP',
                 quickFilterEnabled: true
-                // useRepository: '' // Pode omitir se o SCM do Jenkins já está configurado
             )
         }
 
