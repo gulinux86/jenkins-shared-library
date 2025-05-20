@@ -18,7 +18,7 @@ def call() {
 
         parameters {
              choice(name: 'Escolha_o_ambiente', choices: ['HML', 'PRD', 'TEST'], description: 'Escolha o ambiente para deploy')
-             string(name: 'Branch', defaultValue: 'main', description: 'Informe o nome da branch para o clone')
+             string(name: 'branch', defaultValue: 'main', description: 'Informe o nome da branch para o clone')
              //choice(name: 'branch', choices: ['main', 'develop', 'release', 'prd', 'hml'], description: 'Escolha o branch para o clone')
 
         }
