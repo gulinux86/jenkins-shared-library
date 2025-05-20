@@ -16,34 +16,11 @@ def call() {
             SONAR_CREDENTIAL_ID = 'squ_eead9b322d1d6cdff3d5aecec2d92084d422c98f'  
         }
 
-        options {
-            skipDefaultCheckout() // evita conflito com o SCM declarado abaixo
-        }
-
-        // SCM obrigatório para gitParameter funcionar
-        scm {
-            git {
-                remote {
-                    url 'https://github.com/gulinux86/nodejs-jenkins-pipeline.git'
-                }
-                branches('*/main') // pode deixar genérico, o plugin detecta os outros
-                extensions { } // mantém como está
-            }
-        }
-
         parameters {
-            choice(name: 'Escolha_o_ambiente', choices: ['HML', 'PRD', 'TEST'], description: 'Escolha o ambiente para deploy')
+             choice(name: 'Escolha_o_ambiente', choices: ['HML', 'PRD', 'TEST'], description: 'Escolha o ambiente para deploy')
+             string(name: 'branch', defaultValue: 'main', description: 'Informe o nome do branch para o clone')
+             //choice(name: 'branch', choices: ['main', 'develop', 'release', 'prd', 'hml'], description: 'Escolha o branch para o clone')
 
-            gitParameter(
-                name: 'branch',
-                type: 'PT_BRANCH',
-                defaultValue: 'main',
-                description: 'Escolha o branch para o clone',
-                branchFilter: '.*',
-                sortMode: 'ASCENDING',
-                selectedValue: 'TOP',
-                quickFilterEnabled: true
-            )
         }
 
         stages {
@@ -55,7 +32,7 @@ def call() {
 
             stage('Checkout') {
                 steps {
-                    sh "git clone --single-branch --branch ${params.branch} ${env.GIT_REPO} ."
+                   sh "git clone --single-branch --branch ${params.branch} https://github.com/gulinux86/nodejs-jenkins-pipeline.git ."
                 }
             }
 
